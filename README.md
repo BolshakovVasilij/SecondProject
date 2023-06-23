@@ -94,15 +94,16 @@ Git хеширует (преобразует) информацию о комми
 ###   Жизненный цикла файла Git
 ```mermaid
 flowchart TD
-A[Файл только что создали. Git про него ещё ничего не знает]-->
-A--Состояние: untracked --> B{ Файл добавили в staging area с помощью git add}
-B--Yes.Состояние: staged (+ tracked)-->C{Изменили файл еще раз}
-B--No.Состояние: untracked-->D[Файл не отслеживается]
-C--Yes.Состояния: staged, modified (+ tracked)-->E{staged и modified у одного файла, но у разных его версий.Ещё раз выполнили git add}
-C--No.Состояние: staged (+ tracked)-->F[Состояние не изменилось]
-E--Yes.Состояние staged (+ tracked)-->G{Сделали коммит с помощью git commit}
-G--Yes.Состояние: tracked.-->I[Файл отслеживается]-->C
-G--No.Состояние staged (+ tracked)-->F
+A[Файл только что создали. Git про него ещё ничего не знает];
+A--Состояние: untracked --> B{ Файл добавили в staging area с помощью git add};
+B--Yes.Состояние: staged (+ tracked)-->C{Изменили файл еще раз};
+B--No.Состояние: untracked-->D[Файл не отслеживается];
+C--Yes.Состояния: staged, modified (+ tracked)-->E{staged и modified у одного файла, но у разных его версий.Ещё раз выполнили git add};
+C--No.Состояние: staged (+ tracked)-->F[Состояние не изменилось];
+E--Yes.Состояние staged (+ tracked)-->G{Сделали коммит с помощью git commit};
+G--Yes.Состояние: tracked.-->I[Файл отслеживается]-->C;
+G--No.Состояние staged (+ tracked)-->F;
+```
 Состояния файла в git status:  
 * staged (Changes to be committed в выводе git status);  
 * modified (Changes not staged for commit);  
